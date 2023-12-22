@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    
+    <h2>Liste des Client | <small> <a href="{{ path('add_client')}}">Ajouter</a>
+</small></h2>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+    <table class="table table-hover table-striped" border="1">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Nom client</th>
+            <th>Nombre Personne</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for client in lesClients %}
+            <tr>
+                <td>{{ client.id }}</td>
+                <td>{{ client.nom | upper }}</td>
+                <td>{{ client.nbrPersonne }}</td>
+                <td>{{ client.email }}</td>
+                <td>
+               
+                    
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Aucun abonné</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

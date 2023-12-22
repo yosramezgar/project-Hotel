@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    
+    <h2>Liste des Chambres | <small> <a href="{{ path('Ajouter')}}">Ajouter</a>
+</small></h2>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+    <table class="table table-hover table-striped" border="1">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Nom Chambre</th>
+            <th>Capacité</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for chambre_hote in lesChambres %}
+            <tr>
+                <td>{{ chambre_hote.id }}</td>
+                <td>{{ chambre_hote.nomChambre | upper }}</td>
+                <td>{{ chambre_hote.capacite }}</td>
+                <td>{{ chambre_hote.price }}</td>
+                <td>
+                    <a class="btn btn-info" href="{{ path('edit_user', {'id': chambre_hote.id }) }}">Modifier</a>
+                    <a class="btn btn-danger" href="{{ path('cand_delete', {'id': chambre_hote.id }) }}"
+                       onclick="return confirm('Are you sure to delete! {{ chambre_hote.nomChambre }}')">Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Aucun abonné</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
