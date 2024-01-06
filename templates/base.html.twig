@@ -8,8 +8,17 @@
             <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}" />
         {% endblock %}
     </head>
+    <nav class="navbar bg-info">
+    <div class="container-fluid">
+      <a class="navbar-brand">Bienvenu à notre Hotel</a>
+      <div class="d-flex">
+ <a class="btn btn-success" href="{{ path('HOME') }}"> Gestion de Chambres</a>
+<a class="btn btn-success" href="{{ path('HOMECLIENT') }}"> Gestion des clients  </a>
+      </div>
+    </div>
+  </nav>
     <body>
-        <h1 class="text-center">{% block titre %}Bienvenu à notre Hotel{% endblock %}</h1>
+        <a href="{{path('security_logout')}}"><span class="glyphicon glyphicon-off"></span></a> 
         {% block body %}{% endblock %}
     </body>
 </html>
